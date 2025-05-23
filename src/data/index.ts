@@ -145,3 +145,41 @@ export const appScreenshots: AppScreenshot[] = [
     description: 'Real-time communication with your guard',
   },
 ];
+
+// Import app screenshots
+import heroImg from '../assets/images/hero.png';
+
+export const appScreens = [
+  {
+    id: 'browse',
+    title: 'Find Guards',
+    description: 'Browse through our verified guards and select the one that fits your needs.',
+    iconName: 'Shield',
+    image: heroImg, // Temporary image, replace with your app screenshot
+    features: ['Filter by rating, price, and experience', 'View detailed profiles', 'See availability in real-time'],
+  },
+  {
+    id: 'book',
+    title: 'Easy Booking',
+    description: 'Book your chosen guard for your required date, time, and duration in just a few taps.',
+    iconName: 'Clock',
+    image: heroImg, // Temporary image, replace with your app screenshot
+    features: ['Select date and time', 'Choose duration', 'Add special requirements'],
+  },
+  {
+    id: 'pay',
+    title: 'Secure Payment',
+    description: 'Pay securely through our integrated payment gateway with multiple options.',
+    iconName: 'CreditCard',
+    image: heroImg, // Temporary image, replace with your app screenshot
+    features: ['Multiple payment methods', 'Transparent pricing', 'Electronic receipts'],
+  },
+  {
+    id: 'track',
+    title: 'Track & Chat',
+    description: "Track your guard's location in real-time and communicate directly through the app.",
+    iconName: 'MessageSquare',
+    image: heroImg, // Temporary image, replace with your app screenshot
+    features: ['Real-time location tracking', 'In-app messaging', 'Emergency alerts'],
+  },
+];
