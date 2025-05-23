@@ -12,37 +12,37 @@ export const benefits: Benefit[] = [
     id: 1,
     title: 'Verified Guards',
     description: 'All our guards undergo rigorous background checks and training verification',
-    icon: 'shield-check',
+    icon: 'ShieldCheck',
   },
   {
     id: 2,
     title: 'Transparent Pricing',
     description: 'Know exactly what you pay upfront with no hidden charges',
-    icon: 'indian-rupee',
+    icon: 'IndianRupee',
   },
   {
     id: 3,
     title: 'Real-time Chat',
     description: 'Communicate directly with your assigned guard before and during service',
-    icon: 'message-circle',
+    icon: 'MessageCircle',
   },
   {
     id: 4,
     title: 'Easy Booking Flow',
     description: 'Book a trusted guard in under 2 minutes, anytime 24/7',
-    icon: 'calendar-check',
+    icon: 'CalendarCheck',
   },
   {
     id: 5,
     title: 'Track Guard Location',
     description: 'Know your guard\'s location and ETA in real-time through the app',
-    icon: 'map-pin',
+    icon: 'MapPin',
   },
   {
     id: 6,
     title: 'Trusted by Professionals',
     description: 'Join thousands of satisfied clients who trust SecureMate for their safety',
-    icon: 'users',
+    icon: 'UserCheck',
   },
 ];
 
