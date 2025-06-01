@@ -133,23 +133,31 @@ const Header: React.FC = () => {
       {/* Mobile Navigation */}
       <div
         id="mobile-menu"
-        className={`absolute left-0 w-full md:hidden top-full transform transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+        className={`fixed top-0 left-0 w-full h-full z-40 bg-white md:hidden transition-transform duration-300 ease-in-out ${
+          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
         }`}
         aria-hidden={!isMenuOpen}
       >
-        <div className="bg-white shadow-lg">
-          <nav 
-            className="flex flex-col py-4 space-y-4 container-custom"
-            role="navigation"
-            aria-label="Mobile navigation"
-          >
+        <div className="flex flex-col h-full">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100">
+            <a href="#home" className="flex items-center" onClick={handleNavLinkClick}>
+              <img src={logoImage} alt="SecureMate Logo" className="object-contain w-8 h-8" />
+              <span className="ml-2 text-xl font-bold font-poppins text-primary">SecureMate</span>
+            </a>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="p-2 rounded-lg text-primary hover:bg-gray-100"
+              aria-label="Close navigation menu"
+            >
+              <X className="w-7 h-7" />
+            </button>
+          </div>
+          <nav className="flex flex-col items-center justify-center flex-1 gap-6 px-6" role="navigation" aria-label="Mobile navigation">
             {renderNavLinks(navLinks)}
             <a
               href="#book-now"
-              className="w-full text-center transition-opacity duration-200 btn btn-primary hover:opacity-90"
+              className="w-full mt-4 text-center btn btn-primary hover:opacity-90"
               onClick={handleNavLinkClick}
-              role="button"
             >
               Book Now
             </a>

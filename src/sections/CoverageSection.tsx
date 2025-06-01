@@ -35,9 +35,9 @@ const CoverageSection: React.FC = () => {
         >
           {/* Map Side */}
           <div className="w-full lg:w-1/2">
-            <div className="relative overflow-hidden shadow-2xl rounded-2xl group">
+            <div className="relative overflow-hidden shadow-2xl rounded-2xl group min-h-[320px] sm:min-h-[400px] md:min-h-[450px]">
               {/* Map Background with Gradient Overlay */}
-              <div className="relative h-[450px] overflow-hidden bg-gradient-to-br from-primary-dark to-primary">
+              <div className="relative h-[250px] sm:h-[350px] md:h-[450px] overflow-hidden bg-gradient-to-br from-primary-dark to-primary">
                 {/* Hexagon Grid Pattern */}
                 <div className="absolute inset-0" style={{
                   backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill-rule='evenodd' stroke='%23ffffff10' fill='none'/%3E%3C/svg%3E")`,
@@ -45,13 +45,13 @@ const CoverageSection: React.FC = () => {
                 }}></div>
 
                 {/* Glowing Orbs */}
-                <div className="absolute w-64 h-64 rounded-full bg-accent/10 blur-[100px] animate-float" 
+                <div className="absolute w-32 h-32 sm:w-64 sm:h-64 rounded-full bg-accent/10 blur-[60px] sm:blur-[100px] animate-float" 
                   style={{ top: '20%', left: '30%' }}></div>
-                <div className="absolute w-72 h-72 rounded-full bg-primary-light/20 blur-[120px] animate-pulse-slow" 
+                <div className="absolute w-36 h-36 sm:w-72 sm:h-72 rounded-full bg-primary-light/20 blur-[80px] sm:blur-[120px] animate-pulse-slow" 
                   style={{ bottom: '10%', right: '20%' }}></div>
 
                 {/* State Outline - Simplified Gujarat Shape */}
-                <div className="absolute inset-8 opacity-20">
+                <div className="absolute inset-4 sm:inset-8 opacity-20">
                   <svg viewBox="0 0 100 100" className="w-full h-full">
                     <path
                       d="M40,20 Q60,15 70,30 T80,60 Q70,80 50,85 T30,70 Q20,50 40,20"
