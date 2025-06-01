@@ -77,10 +77,10 @@ const Header: React.FC = () => {
     <header 
       role="banner"
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-primary shadow-md py-2' : 'bg-transparent py-4'
+        isScrolled ? 'bg-primary shadow-md py-2' : 'bg-transparent py-3 sm:py-4'
       }`}
     >
-      <div className="flex items-center justify-between container-custom">
+      <div className="flex items-center justify-between container-custom px-4 md:px-6">
         {/* Logo */}
         <a 
           href="#home" 
@@ -90,10 +90,10 @@ const Header: React.FC = () => {
           <img 
             src={isScrolled ? logoScrolledImage : logoImage}
             alt=""
-            className="object-contain w-8 h-8 transition-all duration-300 md:w-10 md:h-10"
+            className="object-contain w-8 h-8 sm:w-10 sm:h-10 transition-all duration-300"
             aria-hidden="true"
           />
-          <span className={`ml-2 text-lg md:text-xl font-poppins font-bold ${isScrolled ? 'text-white' : 'text-primary'}`}>
+          <span className={`ml-2 text-lg sm:text-xl font-poppins font-bold ${isScrolled ? 'text-white' : 'text-primary'}`}>
             SecureMate
           </span>
         </a>
@@ -117,8 +117,8 @@ const Header: React.FC = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`p-1.5 md:p-2 transition-colors duration-200 rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
-            isScrolled ? 'bg-white/10' : 'bg-primary/10'
+          className={`p-1.5 sm:p-2 transition-colors duration-200 rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
+            isMenuOpen ? 'bg-gray-100' : ''
           }`}
           aria-label={`${isMenuOpen ? 'Close' : 'Open'} navigation menu`}
           aria-expanded={isMenuOpen}
@@ -126,13 +126,13 @@ const Header: React.FC = () => {
         >
           <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
           {isMenuOpen ? (
-            <X className={`w-6 h-6 ${isScrolled ? 'text-white' : 'text-primary'}`} aria-hidden="true" />
+            <X className={`w-6 h-6 sm:w-8 sm:h-8 ${isScrolled ? 'text-primary' : 'text-primary'}`} aria-hidden="true" />
           ) : (
-            <Menu className={`w-6 h-6 ${isScrolled ? 'text-white' : 'text-primary'}`} aria-hidden="true" />
+            <Menu className={`w-6 h-6 sm:w-8 sm:h-8 ${isScrolled ? 'text-primary' : 'text-primary'}`} aria-hidden="true" />
           )}
         </button>
       </div>
-      
+
       {/* Mobile Navigation */}
       <div
         id="mobile-menu"
