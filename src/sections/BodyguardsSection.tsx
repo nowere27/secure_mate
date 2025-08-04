@@ -1,13 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import Button from '../components/Button';
 import { BadgeCheck, CalendarClock, IndianRupee } from 'lucide-react';
 
 const BodyguardsSection: React.FC = () => {
+  const navigate = useNavigate();
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const handleBecomeBodyguard = () => {
+    navigate('/become-bodyguard');
+  };
   
   return (
     <section id="for-bodyguards" className="text-white section bg-primary">
@@ -88,7 +94,7 @@ const BodyguardsSection: React.FC = () => {
               </div>
             </div>
             
-            <Button variant="primary" size="lg">
+            <Button variant="primary" size="lg" onClick={handleBecomeBodyguard}>
               Become a Bodyguard
             </Button>
           </div>
