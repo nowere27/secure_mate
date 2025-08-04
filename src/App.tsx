@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header';
 import HeroSection from './sections/HeroSection';
 import HowItWorksSection from './sections/HowItWorksSection';
@@ -19,22 +20,24 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
-        <HeroSection />
-        <HowItWorksSection />
-        <BenefitsSection />
-        <AppPreviewSection />
-        <BodyguardsSection />
-        <TestimonialsSection />
-        <CoverageSection />
-        <PricingSection />
-        <FAQSection />
-        {/* <ContactSection /> */}
-      </main>
-      <FooterSection />
-    </div>
+    <AuthProvider>
+      <div className="min-h-screen">
+        <Header />
+        <main>
+          <HeroSection />
+          <HowItWorksSection />
+          <BenefitsSection />
+          <AppPreviewSection />
+          <BodyguardsSection />
+          <TestimonialsSection />
+          <CoverageSection />
+          <PricingSection />
+          <FAQSection />
+          {/* <ContactSection /> */}
+        </main>
+        <FooterSection />
+      </div>
+    </AuthProvider>
   );
 }
 

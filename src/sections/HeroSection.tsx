@@ -1,5 +1,6 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
+import { useAuth } from '../contexts/AuthContext';
 import Button from '../components/Button';
 import { Shield, CheckCircle, Clock } from 'lucide-react';
 import logoImage from '../assets/images/Subtract.png';
@@ -10,6 +11,7 @@ const HeroSection: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+  const { user } = useAuth();
   
   return (
     <section 
@@ -53,8 +55,15 @@ const HeroSection: React.FC = () => {
                 variant="primary" 
                 size="lg" 
                 className="flex-1 sm:flex-none text-[11px] leading-none sm:text-sm md:text-base py-2 sm:py-2.5 px-2 sm:px-4 min-w-[120px] sm:min-w-0"
+                onClick={() => {
+                  if (user) {
+                    console.log('Navigate to booking page');
+                  } else {
+                    document.querySelector('[data-auth-trigger]')?.click();
+                  }
+                }}
               >
-                Book a Bodyguard
+                {user ? 'Book a Bodyguard' : 'Get Started'}
               </Button>
               <Button 
                 variant="outline" 

@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
+import AuthModal from './AuthModal';
+import UserMenu from './UserMenu';
 import { navLinks } from '../data';
 import { NavLink } from '../types/navigation';
 import logoImage from '../assets/images/Subtract.png';
@@ -8,6 +11,8 @@ import logoScrolledImage from '../assets/images/Subtract (1).png';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const { user, loading } = useAuth();
 
   // Throttled scroll handler for better performance
   const handleScroll = useCallback(() => {
@@ -58,6 +63,15 @@ const Header: React.FC = () => {
     setIsMenuOpen(false);
   };
 
+  const handleBookNowClick = () => {
+    if (!user) {
+      setShowAuthModal(true);
+    } else {
+      // Navigate to booking page or show booking modal
+      console.log('Navigate to booking page');
+    }
+  };
+
   const renderNavLinks = (links: NavLink[]) => (
     links.map((link) => (
       <a
@@ -105,13 +119,19 @@ const Header: React.FC = () => {
           aria-label="Main navigation"
         >
           {renderNavLinks(navLinks)}
-          <a 
-            href="#book-now" 
-            className="transition-opacity duration-200 btn btn-primary hover:opacity-90"
-            role="button"
-          >
-            Book Now
-          </a>
+          {loading ? (
+            <div className="w-20 h-10 bg-primary/20 rounded-xl animate-pulse"></div>
+          ) : user ? (
+            <UserMenu />
+          ) : (
+            <button 
+              onClick={handleBookNowClick}
+              data-auth-trigger
+              className="transition-opacity duration-200 btn btn-primary hover:opacity-90"
+            >
+              Book Now
+            </button>
+          )}
         </nav>
         
         {/* Mobile Menu Button */}
@@ -159,13 +179,12 @@ const Header: React.FC = () => {
                 </a>
               ))}
               <div className="px-4 pt-4 mt-2 border-t border-neutral-100">
-                <a
-                  href="#book-now"
+                <button
+                  onClick={handleBookNowClick}
                   className="block w-full py-3 text-center text-white transition-opacity bg-primary rounded-xl hover:opacity-90"
-                  onClick={handleNavLinkClick}
                 >
-                  Book Now
-                </a>
+                  {user ? 'Dashboard' : 'Book Now'}
+                </button>
               </div>
             </nav>
           </div>
@@ -176,6 +195,11 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => setShowAuthModal(false)} 
+      />
     </header>
   );
 };
