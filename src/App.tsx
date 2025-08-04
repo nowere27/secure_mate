@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { useAuth } from './contexts/AuthContext';
 import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
+import BecomeBodyguard from './pages/BecomeBodyguard';
+import BodyguardPending from './pages/BodyguardPending';
+import BodyguardDashboard from './pages/BodyguardDashboard';
 import HeroSection from './sections/HeroSection';
 import HowItWorksSection from './sections/HowItWorksSection';
 import BenefitsSection from './sections/BenefitsSection';
@@ -33,7 +37,12 @@ const AppContent: React.FC = () => {
     return (
       <div className="min-h-screen">
         <Header />
-        <Dashboard />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/become-bodyguard" element={<BecomeBodyguard />} />
+          <Route path="/bodyguard-pending" element={<BodyguardPending />} />
+          <Route path="/bodyguard-dashboard" element={<BodyguardDashboard />} />
+        </Routes>
       </div>
     );
   }
@@ -41,19 +50,26 @@ const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <main>
-        <HeroSection />
-        <HowItWorksSection />
-        <BenefitsSection />
-        <AppPreviewSection />
-        <BodyguardsSection />
-        <TestimonialsSection />
-        <CoverageSection />
-        <PricingSection />
-        <FAQSection />
-        {/* <ContactSection /> */}
-      </main>
-      <FooterSection />
+      <Routes>
+        <Route path="/become-bodyguard" element={<BecomeBodyguard />} />
+        <Route path="/bodyguard-pending" element={<BodyguardPending />} />
+        <Route path="/*" element={
+          <>
+            <main>
+              <HeroSection />
+              <HowItWorksSection />
+              <BenefitsSection />
+              <AppPreviewSection />
+              <BodyguardsSection />
+              <TestimonialsSection />
+              <CoverageSection />
+              <PricingSection />
+              <FAQSection />
+            </main>
+            <FooterSection />
+          </>
+        } />
+      </Routes>
     </div>
   );
 };

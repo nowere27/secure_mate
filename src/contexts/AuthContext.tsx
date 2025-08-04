@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabase';
 
@@ -25,6 +26,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Get initial session
@@ -41,10 +43,47 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setSession(session);
       setUser(session?.user ?? null);
       setLoading(false);
+      
+      // Handle bodyguard routing based on status
+      if (session?.user && session.user.user_metadata?.user_type === 'bodyguard') {
+        checkBodyguardStatus(session.user.id);
+      }
     });
 
     return () => subscription.unsubscribe();
   }, []);
+
+  const checkBodyguardStatus = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('bodyguards')
+        .select('status')
+        .eq('id', userId)
+        .single();
+
+      if (error) {
+        console.error('Error checking bodyguard status:', error);
+        return;
+      }
+
+      if (data) {
+        switch (data.status) {
+          case 'pending':
+            navigate('/bodyguard-pending');
+            break;
+          case 'approved':
+            navigate('/bodyguard-dashboard');
+            break;
+          case 'rejected':
+            // Handle rejection case - could navigate to a rejection page
+            console.log('Bodyguard application rejected');
+            break;
+        }
+      }
+    } catch (err) {
+      console.error('Error:', err);
+    }
+  };
 
   const signUp = async (email: string, password: string, fullName: string) => {
     const { error } = await supabase.auth.signUp({
