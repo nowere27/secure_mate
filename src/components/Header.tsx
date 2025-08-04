@@ -66,10 +66,8 @@ const Header: React.FC = () => {
   const handleBookNowClick = () => {
     if (!user) {
       setShowAuthModal(true);
-    } else {
-      // Navigate to booking page or show booking modal
-      console.log('Navigate to booking page');
     }
+    // If user is logged in, they're already on the dashboard
   };
 
   const renderNavLinks = (links: NavLink[]) => (

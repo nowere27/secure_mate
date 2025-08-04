@@ -44,7 +44,7 @@ const UserMenu: React.FC = () => {
             <div className="py-1">
               <button className="flex items-center w-full px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-50">
                 <Shield className="w-4 h-4 mr-2" />
-                My Bookings
+                Dashboard
               </button>
               <button className="flex items-center w-full px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-50">
                 <Settings className="w-4 h-4 mr-2" />

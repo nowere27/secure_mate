@@ -47,10 +47,10 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, initialMode = 's
         if (error) {
           setError(error.message);
         } else {
-          setSuccess('Account created successfully! Please check your email to verify your account.');
+          setSuccess('Account created successfully!');
           setTimeout(() => {
             handleClose();
-          }, 2000);
+          }, 1500);
         }
       } else {
         const { error } = await signIn(email, password);
@@ -60,7 +60,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, initialMode = 's
           setSuccess('Signed in successfully!');
           setTimeout(() => {
             handleClose();
-          }, 1000);
+          }, 800);
         }
       }
     } catch (err) {

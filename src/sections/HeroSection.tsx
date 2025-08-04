@@ -57,13 +57,14 @@ const HeroSection: React.FC = () => {
                 className="flex-1 sm:flex-none text-[11px] leading-none sm:text-sm md:text-base py-2 sm:py-2.5 px-2 sm:px-4 min-w-[120px] sm:min-w-0"
                 onClick={() => {
                   if (user) {
-                    console.log('Navigate to booking page');
+                    // User is already on dashboard, scroll to top or refresh
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   } else {
                     document.querySelector('[data-auth-trigger]')?.click();
                   }
                 }}
               >
-                {user ? 'Book a Bodyguard' : 'Get Started'}
+                {user ? 'Find Guards' : 'Get Started'}
               </Button>
               <Button 
                 variant="outline" 

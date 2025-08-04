@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { AuthProvider } from './contexts/AuthContext';
+import { useAuth } from './contexts/AuthContext';
 import Header from './components/Header';
+import Dashboard from './pages/Dashboard';
 import HeroSection from './sections/HeroSection';
 import HowItWorksSection from './sections/HowItWorksSection';
 import BenefitsSection from './sections/BenefitsSection';
@@ -13,6 +15,49 @@ import FAQSection from './sections/FAQSection';
 import ContactSection from './sections/ContactSection';
 import FooterSection from './sections/FooterSection';
 
+const AppContent: React.FC = () => {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-white to-accent/5">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-neutral-600">Loading SecureMate...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (user) {
+    return (
+      <div className="min-h-screen">
+        <Header />
+        <Dashboard />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen">
+      <Header />
+      <main>
+        <HeroSection />
+        <HowItWorksSection />
+        <BenefitsSection />
+        <AppPreviewSection />
+        <BodyguardsSection />
+        <TestimonialsSection />
+        <CoverageSection />
+        <PricingSection />
+        <FAQSection />
+        {/* <ContactSection /> */}
+      </main>
+      <FooterSection />
+    </div>
+  );
+};
+
 function App() {
   useEffect(() => {
     // Update the document title on component mount
@@ -21,22 +66,7 @@ function App() {
 
   return (
     <AuthProvider>
-      <div className="min-h-screen">
-        <Header />
-        <main>
-          <HeroSection />
-          <HowItWorksSection />
-          <BenefitsSection />
-          <AppPreviewSection />
-          <BodyguardsSection />
-          <TestimonialsSection />
-          <CoverageSection />
-          <PricingSection />
-          <FAQSection />
-          {/* <ContactSection /> */}
-        </main>
-        <FooterSection />
-      </div>
+      <AppContent />
     </AuthProvider>
   );
 }
