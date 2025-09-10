@@ -36,19 +36,25 @@ const BookingCard: React.FC<BookingCardProps> = ({ booking }) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02 }}
-      className="bg-slate-800 rounded-xl p-6 border border-slate-700 hover:border-blue-500/50 transition-all duration-300"
+      whileHover={{ 
+        scale: 1.02,
+        boxShadow: '0 10px 25px rgba(59, 130, 246, 0.2)'
+      }}
+      className="bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-blue-500/50 transition-all duration-300 group relative overflow-hidden"
     >
+      {/* Gradient overlay on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+      
       {/* Header */}
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between mb-4 relative z-10">
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500 p-0.5">
             <div className="w-full h-full rounded-full overflow-hidden bg-slate-800">
-              {booking.bodyguard?.image_url ? (
+              {booking.bodyguard?.profile_photo ? (
                 <img
-                  src={booking.bodyguard.image_url}
+                  src={booking.bodyguard.profile_photo}
                   alt={booking.bodyguard.full_name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
@@ -62,7 +68,7 @@ const BookingCard: React.FC<BookingCardProps> = ({ booking }) => {
             <h3 className="font-semibold text-white">
               {booking.bodyguard?.full_name || 'Bodyguard'}
             </h3>
-            <div className="flex items-center text-slate-400 text-sm">
+            <div className="flex items-center text-gray-300 text-sm">
               <MapPin className="w-3 h-3 mr-1" />
               {booking.bodyguard?.location || 'Location'}
             </div>
@@ -75,15 +81,15 @@ const BookingCard: React.FC<BookingCardProps> = ({ booking }) => {
       </div>
 
       {/* Booking Details */}
-      <div className="grid grid-cols-2 gap-4 mb-4">
-        <div className="flex items-center text-slate-300">
+      <div className="grid grid-cols-2 gap-4 mb-4 relative z-10">
+        <div className="flex items-center text-gray-300">
           <Calendar className="w-4 h-4 mr-2 text-blue-400" />
           <span className="text-sm">
             {format(new Date(booking.booking_date), 'MMM dd, yyyy')}
           </span>
         </div>
         
-        <div className="flex items-center text-slate-300">
+        <div className="flex items-center text-gray-300">
           <Clock className="w-4 h-4 mr-2 text-purple-400" />
           <span className="text-sm">
             {formatTime(booking.booking_time)}
@@ -92,8 +98,8 @@ const BookingCard: React.FC<BookingCardProps> = ({ booking }) => {
       </div>
 
       {/* Duration and Amount */}
-      <div className="flex items-center justify-between pt-4 border-t border-slate-700">
-        <div className="text-slate-300">
+      <div className="flex items-center justify-between pt-4 border-t border-slate-700 relative z-10">
+        <div className="text-gray-300">
           <span className="text-sm">Duration: </span>
           <span className="font-medium">{booking.duration_hours}h</span>
         </div>
@@ -106,9 +112,9 @@ const BookingCard: React.FC<BookingCardProps> = ({ booking }) => {
 
       {/* Special Requirements */}
       {booking.special_requirements && (
-        <div className="mt-4 p-3 bg-slate-700/50 rounded-lg">
-          <p className="text-xs text-slate-400 mb-1">Special Requirements:</p>
-          <p className="text-sm text-slate-300">{booking.special_requirements}</p>
+        <div className="mt-4 p-3 bg-slate-700/50 rounded-lg relative z-10">
+          <p className="text-xs text-gray-400 mb-1">Special Requirements:</p>
+          <p className="text-sm text-gray-300">{booking.special_requirements}</p>
         </div>
       )}
     </motion.div>

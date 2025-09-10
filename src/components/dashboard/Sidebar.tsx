@@ -21,17 +21,17 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
     <motion.div
       initial={{ x: -300 }}
       animate={{ x: 0 }}
-      className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-r border-slate-700 z-40"
+      className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-r border-slate-700 z-40 shadow-2xl shadow-blue-500/10"
     >
       {/* Logo */}
       <div className="p-6 border-b border-slate-700">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30">
             <Shield className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h2 className="text-xl font-bold text-white">SecureMate</h2>
-            <p className="text-sm text-slate-400">Client Dashboard</p>
+            <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">SecureMate</h2>
+            <p className="text-sm text-gray-300">Client Dashboard</p>
           </div>
         </div>
       </div>
@@ -39,14 +39,14 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
       {/* User Info */}
       <div className="p-4 border-b border-slate-700">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/30">
             <User className="w-5 h-5 text-white" />
           </div>
           <div>
             <p className="text-sm font-medium text-white">
               {user?.user_metadata?.full_name || 'User'}
             </p>
-            <p className="text-xs text-slate-400">{user?.email}</p>
+            <p className="text-xs text-gray-300">{user?.email}</p>
           </div>
         </div>
       </div>
@@ -66,11 +66,11 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
                   onClick={() => onTabChange(item.id)}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 ${
                     isActive
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
-                      : 'text-slate-300 hover:bg-slate-700 hover:text-white'
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/30'
+                      : 'text-gray-300 hover:bg-slate-700 hover:text-white hover:shadow-lg hover:shadow-blue-500/20'
                   }`}
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-gray-300 group-hover:text-blue-400'} transition-colors duration-200`} />
                   <span className="font-medium">{item.label}</span>
                 </motion.button>
               </li>
@@ -82,10 +82,13 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
       {/* Logout */}
       <div className="p-4 border-t border-slate-700">
         <motion.button
-          whileHover={{ scale: 1.02 }}
+          whileHover={{ 
+            scale: 1.02,
+            boxShadow: '0 10px 25px rgba(239, 68, 68, 0.3)'
+          }}
           whileTap={{ scale: 0.98 }}
           onClick={signOut}
-          className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 transition-all duration-200"
+          className="w-full flex items-center space-x-3 px-4 py-3 rounded-full bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-red-500/40"
         >
           <LogOut className="w-5 h-5" />
           <span className="font-medium">Logout</span>
