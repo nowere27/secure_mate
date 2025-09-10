@@ -7,7 +7,7 @@ const BodyguardPending: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-accent/5 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100 pt-20">
       <div className="container-custom py-16">
         <div className="max-w-2xl mx-auto text-center">
           {/* Status Icon */}
@@ -19,7 +19,7 @@ const BodyguardPending: React.FC = () => {
           </div>
 
           {/* Main Content */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-neutral-100/50 p-8 mb-8">
+          <div className="bg-white rounded-2xl shadow-lg border border-neutral-200 p-8 mb-8">
             <h1 className="text-3xl font-bold text-primary mb-4">
               Application Under Review
             </h1>
@@ -30,10 +30,10 @@ const BodyguardPending: React.FC = () => {
             {/* Status Steps */}
             <div className="flex items-center justify-center space-x-4 mb-8">
               <div className="flex items-center">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-success rounded-full flex items-center justify-center">
                   <CheckCircle className="w-5 h-5 text-white" />
                 </div>
-                <span className="ml-2 text-sm font-medium text-green-600">Submitted</span>
+                <span className="ml-2 text-sm font-medium text-success">Submitted</span>
               </div>
               
               <div className="w-16 h-0.5 bg-accent animate-pulse"></div>

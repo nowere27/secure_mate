@@ -51,10 +51,10 @@ const BodyguardDashboard: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-white to-accent/5 pt-20">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-neutral-50 via-white to-neutral-100 pt-20">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-neutral-600">Loading your dashboard...</p>
+          <p className="text-neutral-600 font-medium">Loading your dashboard...</p>
         </div>
       </div>
     );
@@ -62,9 +62,9 @@ const BodyguardDashboard: React.FC = () => {
 
   if (!profile) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-white to-accent/5 pt-20">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-neutral-50 via-white to-neutral-100 pt-20">
         <div className="text-center">
-          <Shield className="w-16 h-16 text-red-500 mx-auto mb-4" />
+          <Shield className="w-16 h-16 text-error mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-primary mb-2">Profile Not Found</h2>
           <p className="text-neutral-600">Unable to load your bodyguard profile.</p>
         </div>
@@ -73,7 +73,7 @@ const BodyguardDashboard: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-accent/5 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100 pt-20">
       <div className="container-custom py-8">
         {/* Header */}
         <div className="mb-8">
@@ -86,7 +86,7 @@ const BodyguardDashboard: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Profile Card */}
           <div className="lg:col-span-1">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-neutral-100/50 overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-lg border border-neutral-200 overflow-hidden">
               <div className="bg-gradient-to-br from-primary to-primary-dark p-6 text-white">
                 <div className="flex items-center space-x-4">
                   <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
@@ -105,8 +105,8 @@ const BodyguardDashboard: React.FC = () => {
                     <div className="flex items-center mt-1">
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                         profile.status === 'approved' 
-                          ? 'bg-green-500/20 text-green-100' 
-                          : 'bg-yellow-500/20 text-yellow-100'
+                          ? 'bg-success/20 text-white' 
+                          : 'bg-warning/20 text-white'
                       }`}>
                         {profile.status === 'approved' ? 'Active' : 'Pending'}
                       </span>
@@ -123,7 +123,7 @@ const BodyguardDashboard: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <span className="text-neutral-600">Hourly Rate</span>
                   <div className="flex items-center">
-                    <IndianRupee className="w-4 h-4 text-primary" />
+                    <IndianRupee className="w-4 h-4 text-accent" />
                     <span className="font-semibold">{profile.hourly_rate}</span>
                   </div>
                 </div>
@@ -134,7 +134,7 @@ const BodyguardDashboard: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <span className="text-neutral-600">Rating</span>
                   <div className="flex items-center">
-                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                    <Star className="w-4 h-4 text-accent fill-current" />
                     <span className="font-semibold ml-1">4.8</span>
                   </div>
                 </div>
@@ -151,7 +151,7 @@ const BodyguardDashboard: React.FC = () => {
           <div className="lg:col-span-2 space-y-8">
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-neutral-100/50 p-6">
+              <div className="bg-white rounded-xl shadow-lg border border-neutral-200 p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-neutral-600 text-sm">Total Bookings</p>
@@ -163,7 +163,7 @@ const BodyguardDashboard: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-neutral-100/50 p-6">
+              <div className="bg-white rounded-xl shadow-lg border border-neutral-200 p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-neutral-600 text-sm">This Month</p>
@@ -175,21 +175,21 @@ const BodyguardDashboard: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-neutral-100/50 p-6">
+              <div className="bg-white rounded-xl shadow-lg border border-neutral-200 p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-neutral-600 text-sm">Rating</p>
                     <p className="text-2xl font-bold text-primary">4.8</p>
                   </div>
-                  <div className="w-12 h-12 bg-yellow-400/10 rounded-lg flex items-center justify-center">
-                    <Star className="w-6 h-6 text-yellow-400" />
+                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                    <Star className="w-6 h-6 text-accent" />
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Recent Bookings */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-neutral-100/50 p-6">
+            <div className="bg-white rounded-2xl shadow-lg border border-neutral-200 p-6">
               <h3 className="text-xl font-semibold text-primary mb-6">Recent Bookings</h3>
               
               <div className="space-y-4">
@@ -218,7 +218,7 @@ const BodyguardDashboard: React.FC = () => {
             </div>
 
             {/* Availability */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-neutral-100/50 p-6">
+            <div className="bg-white rounded-2xl shadow-lg border border-neutral-200 p-6">
               <h3 className="text-xl font-semibold text-primary mb-6">Availability Settings</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

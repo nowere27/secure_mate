@@ -171,22 +171,22 @@ const ClientDashboard: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-slate-400">Loading dashboard...</p>
+          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-neutral-600 font-medium">Loading dashboard...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100">
       <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
       
       <div className="ml-64 min-h-screen">
         {/* Header */}
-        <div className="bg-gradient-to-r from-slate-800 to-slate-700 border-b border-slate-600 p-6">
+        <div className="bg-gradient-to-r from-primary to-primary-dark border-b border-primary-light/20 p-6 shadow-lg">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-white">
@@ -194,7 +194,7 @@ const ClientDashboard: React.FC = () => {
                 {activeTab === 'bookings' && 'My Bookings'}
                 {activeTab === 'profile' && 'Profile Settings'}
               </h1>
-              <p className="text-slate-400 mt-1">
+              <p className="text-white/80 mt-1">
                 {activeTab === 'home' && 'Browse and book professional security guards'}
                 {activeTab === 'bookings' && 'Manage your current and past bookings'}
                 {activeTab === 'profile' && 'Update your personal information'}
@@ -218,22 +218,22 @@ const ClientDashboard: React.FC = () => {
                 {/* Search and Filters */}
                 <div className="flex items-center space-x-4">
                   <div className="relative flex-1 max-w-md">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-neutral-400" />
                     <input
                       type="text"
                       placeholder="Search by name or location..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 bg-slate-800 border border-slate-700 rounded-2xl text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20"
+                      className="w-full pl-10 pr-4 py-3 bg-white border border-neutral-200 rounded-2xl text-neutral-800 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 hover:shadow-lg shadow-sm"
                     />
                   </div>
                   
                   <motion.button 
                     whileHover={{ 
                       scale: 1.05,
-                      boxShadow: '0 10px 25px rgba(59, 130, 246, 0.2)'
+                      boxShadow: '0 10px 25px rgba(27, 46, 89, 0.2)'
                     }}
-                    className="flex items-center space-x-2 px-4 py-3 bg-slate-800 border border-slate-700 rounded-2xl text-gray-300 hover:bg-slate-700 hover:border-blue-500/50 transition-all duration-300"
+                    className="flex items-center space-x-2 px-4 py-3 bg-white border border-neutral-200 rounded-2xl text-neutral-600 hover:bg-neutral-50 hover:border-primary/50 transition-all duration-300 shadow-sm"
                   >
                     <Filter className="w-5 h-5" />
                     <span>Filters</span>
@@ -253,10 +253,10 @@ const ClientDashboard: React.FC = () => {
 
                 {filteredBodyguards.length === 0 && (
                   <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Search className="w-8 h-8 text-gray-400" />
+                    <div className="w-16 h-16 bg-neutral-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Search className="w-8 h-8 text-neutral-400" />
                     </div>
-                    <p className="text-gray-300">No bodyguards found matching your search.</p>
+                    <p className="text-neutral-600">No bodyguards found matching your search.</p>
                   </div>
                 )}
               </motion.div>
@@ -273,8 +273,8 @@ const ClientDashboard: React.FC = () => {
               >
                 {/* Upcoming Bookings */}
                 <div>
-                  <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
-                    <Calendar className="w-5 h-5 mr-2 text-blue-400" />
+                  <h2 className="text-xl font-semibold text-primary mb-4 flex items-center">
+                    <Calendar className="w-5 h-5 mr-2 text-accent" />
                     Upcoming Bookings ({upcomingBookings.length})
                   </h2>
                   
@@ -285,16 +285,16 @@ const ClientDashboard: React.FC = () => {
                       ))}
                     </div>
                   ) : (
-                    <div className="bg-slate-800 rounded-xl p-8 text-center border border-slate-700">
-                      <Calendar className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-300">No upcoming bookings</p>
+                    <div className="bg-white rounded-xl p-8 text-center border border-neutral-200 shadow-sm">
+                      <Calendar className="w-12 h-12 text-neutral-400 mx-auto mb-4" />
+                      <p className="text-neutral-600">No upcoming bookings</p>
                     </div>
                   )}
                 </div>
 
                 {/* Past Bookings */}
                 <div>
-                  <h2 className="text-xl font-semibold text-white mb-4">
+                  <h2 className="text-xl font-semibold text-primary mb-4">
                     Past Bookings ({pastBookings.length})
                   </h2>
                   
@@ -305,9 +305,9 @@ const ClientDashboard: React.FC = () => {
                       ))}
                     </div>
                   ) : (
-                    <div className="bg-slate-800 rounded-xl p-8 text-center border border-slate-700">
-                      <Calendar className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-300">No past bookings</p>
+                    <div className="bg-white rounded-xl p-8 text-center border border-neutral-200 shadow-sm">
+                      <Calendar className="w-12 h-12 text-neutral-400 mx-auto mb-4" />
+                      <p className="text-neutral-600">No past bookings</p>
                     </div>
                   )}
                 </div>
@@ -323,9 +323,9 @@ const ClientDashboard: React.FC = () => {
                 exit={{ opacity: 0, x: -20 }}
                 className="max-w-2xl"
               >
-                <div className="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden">
+                <div className="bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-lg">
                   {/* Profile Header */}
-                  <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-6">
+                  <div className="bg-gradient-to-r from-primary to-primary-dark p-6">
                     <div className="flex items-center space-x-4">
                       <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center">
                         <User className="w-10 h-10 text-white" />
@@ -342,11 +342,11 @@ const ClientDashboard: React.FC = () => {
                   {/* Profile Form */}
                   <div className="p-6 space-y-6">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold text-white">Personal Information</h3>
+                      <h3 className="text-lg font-semibold text-primary">Personal Information</h3>
                       {!editingProfile ? (
                         <button
                           onClick={() => setEditingProfile(true)}
-                          className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-blue-500/40 hover:scale-105"
+                          className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-primary/40 hover:scale-105"
                         >
                           <Edit2 className="w-4 h-4" />
                           <span>Edit</span>
@@ -355,14 +355,14 @@ const ClientDashboard: React.FC = () => {
                         <div className="flex space-x-2">
                           <button
                             onClick={() => setEditingProfile(false)}
-                            className="flex items-center space-x-2 px-4 py-2 bg-slate-600 hover:bg-slate-500 text-white rounded-full transition-all duration-300 hover:scale-105"
+                            className="flex items-center space-x-2 px-4 py-2 bg-neutral-500 hover:bg-neutral-600 text-white rounded-full transition-all duration-300 hover:scale-105"
                           >
                             <X className="w-4 h-4" />
                             <span>Cancel</span>
                           </button>
                           <button
                             onClick={handleProfileUpdate}
-                            className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-green-500/40 hover:scale-105"
+                            className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-success to-success hover:from-success hover:to-success text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-success/40 hover:scale-105"
                           >
                             <Save className="w-4 h-4" />
                             <span>Save</span>
@@ -373,7 +373,7 @@ const ClientDashboard: React.FC = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-neutral-700 mb-2">
                           <User className="w-4 h-4 inline mr-2" />
                           Full Name
                         </label>
@@ -382,17 +382,17 @@ const ClientDashboard: React.FC = () => {
                             type="text"
                             value={profileForm.full_name}
                             onChange={(e) => setProfileForm({ ...profileForm, full_name: e.target.value })}
-                            className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                            className="w-full p-3 bg-white border border-neutral-300 rounded-lg text-neutral-800 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                           />
                         ) : (
-                          <div className="p-3 bg-slate-700 rounded-lg text-white">
+                          <div className="p-3 bg-neutral-50 rounded-lg text-neutral-800">
                             {profile?.full_name || 'Not set'}
                           </div>
                         )}
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-neutral-700 mb-2">
                           <Phone className="w-4 h-4 inline mr-2" />
                           Phone Number
                         </label>
@@ -401,21 +401,21 @@ const ClientDashboard: React.FC = () => {
                             type="tel"
                             value={profileForm.phone}
                             onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
-                            className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                            className="w-full p-3 bg-white border border-neutral-300 rounded-lg text-neutral-800 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                           />
                         ) : (
-                          <div className="p-3 bg-slate-700 rounded-lg text-white">
+                          <div className="p-3 bg-neutral-50 rounded-lg text-neutral-800">
                             {profile?.phone || 'Not set'}
                           </div>
                         )}
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <label className="block text-sm font-medium text-neutral-700 mb-2">
                           <Mail className="w-4 h-4 inline mr-2" />
                           Email Address
                         </label>
-                        <div className="p-3 bg-slate-700 rounded-lg text-gray-400">
+                        <div className="p-3 bg-neutral-50 rounded-lg text-neutral-500">
                           {user?.email} (Cannot be changed)
                         </div>
                       </div>

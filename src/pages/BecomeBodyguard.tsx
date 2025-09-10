@@ -134,7 +134,7 @@ const BecomeBodyguard: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-accent/5 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100 pt-20">
       <div className="container-custom py-8">
         <div className="max-w-2xl mx-auto">
           {/* Header */}
@@ -147,14 +147,14 @@ const BecomeBodyguard: React.FC = () => {
           </div>
 
           {/* Form Card */}
-          <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-neutral-100/50 overflow-hidden">
+          <div className="relative bg-white rounded-2xl shadow-lg border border-neutral-200 overflow-hidden">
             {/* Decorative Elements */}
             <div className="absolute top-0 left-0 w-24 h-24 border-t-2 border-l-2 border-primary/20 rounded-tl-2xl"></div>
             <div className="absolute bottom-0 right-0 w-24 h-24 border-b-2 border-r-2 border-primary/20 rounded-br-2xl"></div>
 
             <div className="relative p-8">
               {error && (
-                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                <div className="mb-6 p-4 bg-error/10 border border-error/20 rounded-lg text-error text-sm">
                   {error}
                 </div>
               )}
@@ -332,7 +332,7 @@ const BecomeBodyguard: React.FC = () => {
                         />
                       </div>
                       {profilePhoto && (
-                        <p className="text-xs text-green-600 mt-1">✓ {profilePhoto.name}</p>
+                        <p className="text-xs text-success mt-1">✓ {profilePhoto.name}</p>
                       )}
                     </div>
 
@@ -349,7 +349,7 @@ const BecomeBodyguard: React.FC = () => {
                         />
                       </div>
                       {idProof && (
-                        <p className="text-xs text-green-600 mt-1">✓ {idProof.name}</p>
+                        <p className="text-xs text-success mt-1">✓ {idProof.name}</p>
                       )}
                     </div>
                   </div>

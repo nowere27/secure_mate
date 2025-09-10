@@ -87,10 +87,10 @@ const BookingModal: React.FC<BookingModalProps> = ({
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-md bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-2xl shadow-blue-500/20"
+            className="w-full max-w-md bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-2xl shadow-primary/20"
           >
             {/* Header */}
-            <div className="relative p-6 bg-gradient-to-r from-blue-600 to-purple-600">
+            <div className="relative p-6 bg-gradient-to-r from-primary to-primary-dark">
               <button
                 onClick={onClose}
                 className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110"
@@ -100,7 +100,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
               
               <div className="flex items-center space-x-4">
                 <div className="w-16 h-16 rounded-full overflow-hidden bg-white/10 p-0.5">
-                  <div className="w-full h-full rounded-full overflow-hidden bg-slate-800">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-white">
                     {bodyguard.profile_photo ? (
                       <img
                         src={bodyguard.profile_photo}
@@ -108,7 +108,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                      <div className="w-full h-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                         <User className="w-8 h-8 text-white" />
                       </div>
                     )}
@@ -128,14 +128,14 @@ const BookingModal: React.FC<BookingModalProps> = ({
             {/* Form */}
             <div className="p-6 space-y-6">
               {error && (
-                <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm animate-pulse">
+                <div className="p-3 bg-error/10 border border-error/20 rounded-lg text-error text-sm animate-pulse">
                   {error}
                 </div>
               )}
 
               {/* Date Selection */}
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">
+                <label className="block text-sm font-medium text-neutral-700 mb-2">
                   <Calendar className="w-4 h-4 inline mr-2" />
                   Select Date
                 </label>
@@ -144,7 +144,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
                     selected={selectedDate}
                     onChange={setSelectedDate}
                     minDate={new Date()}
-                    className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                    className="w-full p-3 bg-white border border-neutral-300 rounded-lg text-neutral-800 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                     dateFormat="MMMM d, yyyy"
                   />
                 </div>
@@ -152,14 +152,14 @@ const BookingModal: React.FC<BookingModalProps> = ({
 
               {/* Time Selection */}
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">
+                <label className="block text-sm font-medium text-neutral-700 mb-2">
                   <Clock className="w-4 h-4 inline mr-2" />
                   Select Time
                 </label>
                 <select
                   value={selectedTime}
                   onChange={(e) => setSelectedTime(e.target.value)}
-                  className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                  className="w-full p-3 bg-white border border-neutral-300 rounded-lg text-neutral-800 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                 >
                   {timeSlots.map((time) => (
                     <option key={time} value={time}>
@@ -171,13 +171,13 @@ const BookingModal: React.FC<BookingModalProps> = ({
 
               {/* Duration */}
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">
+                <label className="block text-sm font-medium text-neutral-700 mb-2">
                   Duration (hours)
                 </label>
                 <select
                   value={duration}
                   onChange={(e) => setDuration(Number(e.target.value))}
-                  className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                  className="w-full p-3 bg-white border border-neutral-300 rounded-lg text-neutral-800 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                 >
                   {[1, 2, 3, 4, 6, 8, 12, 24].map((hours) => (
                     <option key={hours} value={hours}>
@@ -189,32 +189,32 @@ const BookingModal: React.FC<BookingModalProps> = ({
 
               {/* Special Requirements */}
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">
+                <label className="block text-sm font-medium text-neutral-700 mb-2">
                   Special Requirements (Optional)
                 </label>
                 <textarea
                   value={specialRequirements}
                   onChange={(e) => setSpecialRequirements(e.target.value)}
                   rows={3}
-                  className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none transition-all duration-300"
+                  className="w-full p-3 bg-white border border-neutral-300 rounded-lg text-neutral-800 focus:ring-2 focus:ring-primary focus:border-primary resize-none transition-all duration-300"
                   placeholder="Any specific requirements or instructions..."
                 />
               </div>
 
               {/* Total Amount */}
-              <div className="bg-slate-700 rounded-lg p-4">
-                <div className="flex justify-between items-center text-slate-300 mb-2">
+              <div className="bg-neutral-50 rounded-lg p-4">
+                <div className="flex justify-between items-center text-neutral-600 mb-2">
                   <span>Rate per hour:</span>
                   <span className="font-medium">₹{bodyguard.hourly_rate}</span>
                 </div>
-                <div className="flex justify-between items-center text-slate-300 mb-2">
+                <div className="flex justify-between items-center text-neutral-600 mb-2">
                   <span>Duration:</span>
                   <span className="font-medium">{duration} hour{duration > 1 ? 's' : ''}</span>
                 </div>
-                <div className="border-t border-slate-600 pt-2 mt-2">
-                  <div className="flex justify-between items-center text-white font-bold text-lg">
+                <div className="border-t border-neutral-200 pt-2 mt-2">
+                  <div className="flex justify-between items-center text-primary font-bold text-lg">
                     <span>Total Amount:</span>
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">₹{bodyguard.hourly_rate * duration}</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-dark">₹{bodyguard.hourly_rate * duration}</span>
                   </div>
                 </div>
               </div>
@@ -223,19 +223,19 @@ const BookingModal: React.FC<BookingModalProps> = ({
               <div className="flex space-x-3">
                 <button
                   onClick={onClose}
-                  className="flex-1 py-3 px-4 bg-slate-700 hover:bg-slate-600 text-white rounded-full transition-all duration-300 hover:scale-105"
+                  className="flex-1 py-3 px-4 bg-neutral-200 hover:bg-neutral-300 text-neutral-700 rounded-full transition-all duration-300 hover:scale-105"
                 >
                   Cancel
                 </button>
                 <motion.button
                   whileHover={{ 
                     scale: 1.05,
-                    boxShadow: '0 10px 25px rgba(59, 130, 246, 0.4)'
+                    boxShadow: '0 10px 25px rgba(251, 191, 36, 0.4)'
                   }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleBooking}
                   disabled={loading || !selectedDate}
-                  className="flex-1 py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-blue-500/40"
+                  className="flex-1 py-3 px-4 bg-gradient-to-r from-accent to-accent-dark hover:from-accent-dark hover:to-accent text-primary rounded-full font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-accent/40"
                 >
                   {loading ? 'Booking...' : 'Confirm Booking'}
                 </motion.button>
