@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { useAuth } from './contexts/AuthContext';
 import Header from './components/Header';
+import ClientDashboard from './pages/ClientDashboard';
 import Dashboard from './pages/Dashboard';
 import BecomeBodyguard from './pages/BecomeBodyguard';
 import BodyguardPending from './pages/BodyguardPending';
@@ -36,9 +37,9 @@ const AppContent: React.FC = () => {
   if (user) {
     return (
       <div className="min-h-screen">
-        <Header />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<ClientDashboard />} />
+          <Route path="/old-dashboard" element={<><Header /><Dashboard /></>} />
           <Route path="/become-bodyguard" element={<BecomeBodyguard />} />
           <Route path="/bodyguard-pending" element={<BodyguardPending />} />
           <Route path="/bodyguard-dashboard" element={<BodyguardDashboard />} />
